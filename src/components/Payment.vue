@@ -37,6 +37,9 @@
                                             <v-radio label="3-5 Business Days" value="slowShip"></v-radio>
                                         </v-radio-group>
                                     </v-card-text>
+                                    <v-card-actions>
+                                        <v-btn> Submit </v-btn>
+                                    </v-card-actions>
                                 </v-card>
                             </v-form>
                         </v-col>
