@@ -97,7 +97,48 @@
 
         <template v-slot:[`item.3`]="{ item }">
             <v-card :title="item" flat>
-                <!-- Billing Address Form -->
+                <v-container>
+                    <v-row justify="center">
+                        <v-col cols="12" sm="8" md="12">
+                            <v-form @submit.prevent="submitForm">
+                                <v-card>
+                                    <v-card-title class="text-center headline">Billing Address</v-card-title>
+                                    <v-card-text>
+                                        <v-text-field variant="underlined" color="primary" v-model="fullName"
+                                            label="Full Name" class="custom-text-field"></v-text-field>
+                                        <v-row>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field variant="underlined" v-model="username" label="Username"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <v-text-field variant="underlined" v-model="email" label="Email (Optional)"></v-text-field>
+                                                <v-text-field variant="underlined" v-model="email"
+                                                    label="Phone Number (Optional)"></v-text-field>
+                                            </v-col>
+                                        </v-row>
+                                        <v-text-field variant="underlined" v-model="address" label="Address"></v-text-field>
+                                        <v-text-field variant="underlined" v-model="address2" label="Address 2 (Optional)"></v-text-field>
+                                        <v-textarea variant="underlined" v-model="specialNotes" label="Special Notes (Optional)"
+                                            hint="Include any special request you have for us."></v-textarea>
+                                        <v-checkbox v-model="sameShipping" class="custom-checkbox"
+                                            label="Shipping address is same as billing"></v-checkbox>
+                                        <v-checkbox v-model="saveInfo" label="Save my info for next time"></v-checkbox>
+                                        <v-divider></v-divider>
+                                        <v-subheader>Shipping Options</v-subheader>
+                                        <v-radio-group v-model="selectedShipping" row class="custom-radio-group">
+                                            <v-radio label="Next day shipping" value="nextDay"></v-radio>
+                                            <v-radio label="Same day shipping" value="sameDay"></v-radio>
+                                            <v-radio label="3-5 Business Days" value="slowShip"></v-radio>
+                                        </v-radio-group>
+                                    </v-card-text>
+                                    <v-card-actions>
+                                        <v-btn> Submit </v-btn>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-form>
+                        </v-col>
+                    </v-row>
+                </v-container>
             </v-card>
         </template>
     </v-stepper>
