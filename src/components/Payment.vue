@@ -14,17 +14,17 @@
                                             label="Full Name" class="custom-text-field"></v-text-field>
                                         <v-row>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="username" label="Username"></v-text-field>
+                                                <v-text-field variant="underlined" v-model="username" label="Username"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field v-model="email" label="Email (Optional)"></v-text-field>
-                                                <v-text-field v-model="email"
+                                                <v-text-field variant="underlined" v-model="email" label="Email (Optional)"></v-text-field>
+                                                <v-text-field variant="underlined" v-model="email"
                                                     label="Phone Number (Optional)"></v-text-field>
                                             </v-col>
                                         </v-row>
-                                        <v-text-field solo v-model="address" label="Address"></v-text-field>
-                                        <v-text-field v-model="address2" label="Address 2 (Optional)"></v-text-field>
-                                        <v-textarea v-model="specialNotes" label="Special Notes (Optional)"
+                                        <v-text-field variant="underlined" v-model="address" label="Address"></v-text-field>
+                                        <v-text-field variant="underlined" v-model="address2" label="Address 2 (Optional)"></v-text-field>
+                                        <v-textarea variant="underlined" v-model="specialNotes" label="Special Notes (Optional)"
                                             hint="Include any special request you have for us."></v-textarea>
                                         <v-checkbox v-model="sameShipping" class="custom-checkbox"
                                             label="Shipping address is same as billing"></v-checkbox>
