@@ -106,6 +106,8 @@
                                 <v-col cols="12" md="6">
                                     <v-text-field v-model="billingInfo.firstName" label="First Name"
                                         :rules="[rules.required]" required></v-text-field>
+                                        <v-text-field v-model="billingInfo.email" label="Email Address"
+                                        :rules="[rules.email]" required></v-text-field>
                                 </v-col>
                                 <v-col cols="12" md="6">
                                     <v-text-field v-model="billingInfo.lastName" label="Last Name" :rules="[rules.required]"
@@ -169,12 +171,12 @@ export default {
             },
             rules: {
                 zipCode: (value) =>
-                    /^[0-9]{5}(?:-[0-9]{4})?$/.test(value) ||
+                    /^[0-9]{4}(?:-[0-9]{3})?$/.test(value) ||
                     'Zip Code must be valid (e.g., 12345 or 12345-6789)',
                 required: (value) => !!value || 'This field is required',
-                email: (value) => /.+@.+\..+/.test(value) || 'E-mail must be valid',
-                phone: (value) =>
-                    /^[0-9]{10}$/.test(value) || 'Phone number must be valid (e.g., 1234567890)',
+                email: (value) =>
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ||
+                'This field is required',
             },
             billingInfo: {
                 firstName: '',
@@ -210,12 +212,12 @@ export default {
                     // Check if all forms are valid before proceeding
                     if (billingFormIsValid && cardFormIsValid) {
                         // Perform actions with billingInfo and formData data (e.g., send to server)
-                        console.log('Forms submitted successfully', this.billingInfo, this.formData);
+                        alert('Forms submitted successfully', this.billingInfo, this.formData);
                     } else {
-                        console.log('Forms contain validation errors');
+                        alert('Forms contain validation errors');
                     }
                 } else {
-                    console.error('Billing form ref is undefined');
+                    alert('Billing form ref is undefined');
                 }
             });
         },

@@ -222,6 +222,26 @@ export default {
 </script>
   
 <style scoped>
+@media only screen and (max-width: 600px) {
+  /* Mobile styles go here */
+  .search-bar {
+    padding: 5px; /* Adjust padding for mobile */
+  }
+
+  .search-input {
+    width: 100%; /* Full width on mobile */
+    margin-left: 0; /* Remove left margin on mobile */
+  }
+
+  .carts {
+    width: 100%; /* Full width on mobile */
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+
+  /* Add more styles for mobile as needed */
+}
 .border-top {
     border-top: 1px solid #000dff;
 }
