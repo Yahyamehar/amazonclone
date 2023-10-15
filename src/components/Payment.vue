@@ -6,7 +6,7 @@
                 <v-container>
                     <v-row justify="center">
                         <v-col cols="12" sm="8" md="12">
-                            <v-form @submit.prevent="submitForm">
+                            <v-form ref="billingForm" @submit.prevent="submitForm">
                                 <v-card>
                                     <v-card-title class="text-center headline">Billing Address</v-card-title>
                                     <v-card-text>
@@ -14,17 +14,21 @@
                                             label="Full Name" class="custom-text-field"></v-text-field>
                                         <v-row>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field variant="underlined" v-model="username" label="Username"></v-text-field>
+                                                <v-text-field variant="underlined" v-model="username"
+                                                    label="Username"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6">
-                                                <v-text-field variant="underlined" v-model="email" label="Email (Optional)"></v-text-field>
+                                                <v-text-field variant="underlined" v-model="email"
+                                                    label="Email (Optional)"></v-text-field>
                                                 <v-text-field variant="underlined" v-model="email"
                                                     label="Phone Number (Optional)"></v-text-field>
                                             </v-col>
                                         </v-row>
                                         <v-text-field variant="underlined" v-model="address" label="Address"></v-text-field>
-                                        <v-text-field variant="underlined" v-model="address2" label="Address 2 (Optional)"></v-text-field>
-                                        <v-textarea variant="underlined" v-model="specialNotes" label="Special Notes (Optional)"
+                                        <v-text-field variant="underlined" v-model="address2"
+                                            label="Address 2 (Optional)"></v-text-field>
+                                        <v-textarea variant="underlined" v-model="specialNotes"
+                                            label="Special Notes (Optional)"
                                             hint="Include any special request you have for us."></v-textarea>
                                         <v-checkbox v-model="sameShipping" class="custom-checkbox"
                                             label="Shipping address is same as billing"></v-checkbox>
@@ -38,14 +42,13 @@
                                         </v-radio-group>
                                     </v-card-text>
                                     <v-card-actions>
-                                        <v-btn> Submit </v-btn>
+                                        <v-btn type="submit" block class="mt-2">Submit</v-btn>
                                     </v-card-actions>
                                 </v-card>
                             </v-form>
                         </v-col>
                     </v-row>
                 </v-container>
-
             </v-card>
         </template>
 
@@ -54,16 +57,15 @@
                 <v-app>
                     <v-container fluid>
                         <v-row justify="center">
-                            <v-col md="4">
+                            <v-col md="10">
                                 <v-card class="well">
                                     <v-row>
-                                        <!-- Your card content goes here -->
+                                        <h1 class="ml-7"> Enter Your Card Detail </h1>
                                     </v-row>
                                     <br />
-
                                     <v-row>
-                                        <v-col md="8">
-                                            <v-text-field label="Credit Card Number"
+                                        <v-col md="7" class="ml-5">
+                                            <v-text-field label="Credit or Debit Card Number"
                                                 v-model="formData.number"></v-text-field>
                                         </v-col>
                                         <v-col md="4">
@@ -73,8 +75,8 @@
                                     </v-row>
 
                                     <v-row>
-                                        <v-col md="8">
-                                            <v-text-field label="Name" v-model="formData.name"></v-text-field>
+                                        <v-col md="5" class="ml-5">
+                                            <v-text-field label="Card Holder Name" v-model="formData.name"></v-text-field>
                                         </v-col>
                                         <v-col md="4">
                                             <v-text-field label="CVV" v-model="formData.cvv"></v-text-field>
@@ -82,8 +84,8 @@
                                     </v-row>
 
                                     <v-row>
-                                        <v-col md="12" class="text-right">
-                                            <v-btn @click="submitForm" color="success">Submit</v-btn>
+                                        <v-col md="12" class="text-right mb-4">
+                                            <v-btn @click="submitForm" class="mr-3" color="success">Submit</v-btn>
                                             <v-btn @click="clearForm" color="info">Clear</v-btn>
                                         </v-col>
                                     </v-row>
@@ -97,48 +99,58 @@
 
         <template v-slot:[`item.3`]="{ item }">
             <v-card :title="item" flat>
-                <v-container>
-                    <v-row justify="center">
-                        <v-col cols="12" sm="8" md="12">
-                            <v-form @submit.prevent="submitForm">
-                                <v-card>
-                                    <v-card-title class="text-center headline">Billing Address</v-card-title>
-                                    <v-card-text>
-                                        <v-text-field variant="underlined" color="primary" v-model="fullName"
-                                            label="Full Name" class="custom-text-field"></v-text-field>
-                                        <v-row>
-                                            <v-col cols="12" sm="6">
-                                                <v-text-field variant="underlined" v-model="username" label="Username"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6">
-                                                <v-text-field variant="underlined" v-model="email" label="Email (Optional)"></v-text-field>
-                                                <v-text-field variant="underlined" v-model="email"
-                                                    label="Phone Number (Optional)"></v-text-field>
-                                            </v-col>
-                                        </v-row>
-                                        <v-text-field variant="underlined" v-model="address" label="Address"></v-text-field>
-                                        <v-text-field variant="underlined" v-model="address2" label="Address 2 (Optional)"></v-text-field>
-                                        <v-textarea variant="underlined" v-model="specialNotes" label="Special Notes (Optional)"
-                                            hint="Include any special request you have for us."></v-textarea>
-                                        <v-checkbox v-model="sameShipping" class="custom-checkbox"
-                                            label="Shipping address is same as billing"></v-checkbox>
-                                        <v-checkbox v-model="saveInfo" label="Save my info for next time"></v-checkbox>
-                                        <v-divider></v-divider>
-                                        <v-subheader>Shipping Options</v-subheader>
-                                        <v-radio-group v-model="selectedShipping" row class="custom-radio-group">
-                                            <v-radio label="Next day shipping" value="nextDay"></v-radio>
-                                            <v-radio label="Same day shipping" value="sameDay"></v-radio>
-                                            <v-radio label="3-5 Business Days" value="slowShip"></v-radio>
-                                        </v-radio-group>
-                                    </v-card-text>
-                                    <v-card-actions>
-                                        <v-btn> Submit </v-btn>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-form>
-                        </v-col>
-                    </v-row>
-                </v-container>
+                <v-app>
+                    <v-container class="mt-14">
+                        <v-form ref="billingForm" @submit.prevent="submitForm">
+                            <v-row>
+                                <v-col cols="12" md="6">
+                                    <v-text-field v-model="billingInfo.firstName" label="First Name"
+                                        :rules="[rules.required]" required></v-text-field>
+                                </v-col>
+                                <v-col cols="12" md="6">
+                                    <v-text-field v-model="billingInfo.lastName" label="Last Name" :rules="[rules.required]"
+                                        required></v-text-field>
+                                </v-col>
+                            </v-row>
+
+                            <v-row>
+                                <v-col cols="12">
+                                    <v-text-field :rules="[rules.required]" v-model="billingInfo.address" label="Address"
+                                        required></v-text-field>
+                                </v-col>
+                            </v-row>
+
+                            <v-row>
+                                <v-col cols="12" md="6">
+                                    <v-text-field :rules="[rules.required]" v-model="billingInfo.city" label="City"
+                                        required></v-text-field>
+                                </v-col>
+                                <v-col cols="12" md="6">
+                                    <v-text-field :rules="[rules.required]" v-model="billingInfo.state" label="State"
+                                        required></v-text-field>
+                                </v-col>
+                            </v-row>
+
+                            <v-row>
+                                <v-col cols="12" md="6">
+                                    <v-text-field v-model="billingInfo.zipCode" label="Zip Code" required
+                                        :rules="[rules.zipCode]"></v-text-field>
+                                </v-col>
+                                <v-col cols="12" md="6">
+                                    <v-text-field :rules="[rules.required]" v-model="billingInfo.country" label="Country"
+                                        required></v-text-field>
+                                </v-col>
+                            </v-row>
+
+                            <v-btn type="submit" class="ma-2" elevation="2">
+                                <v-icon left>mdi-send</v-icon>
+                                Submit
+                            </v-btn>
+                        </v-form>
+                    </v-container>
+                </v-app>
+
+
             </v-card>
         </template>
     </v-stepper>
@@ -155,6 +167,24 @@ export default {
                 name: '',
                 cvv: '',
             },
+            rules: {
+                zipCode: (value) =>
+                    /^[0-9]{5}(?:-[0-9]{4})?$/.test(value) ||
+                    'Zip Code must be valid (e.g., 12345 or 12345-6789)',
+                required: (value) => !!value || 'This field is required',
+                email: (value) => /.+@.+\..+/.test(value) || 'E-mail must be valid',
+                phone: (value) =>
+                    /^[0-9]{10}$/.test(value) || 'Phone number must be valid (e.g., 1234567890)',
+            },
+            billingInfo: {
+                firstName: '',
+                lastName: '',
+                address: '',
+                city: '',
+                state: '',
+                zipCode: '',
+                country: '',
+            },
             fullName: '',
             username: '',
             email: '',
@@ -168,8 +198,36 @@ export default {
     },
     methods: {
         submitForm() {
-            // Handle form submission logic here
-            console.log('Form submitted:', this.fullName, this.username, this.email, this.address, this.address2, this.specialNotes, this.sameShipping, this.saveInfo, this.selectedShipping);
+            this.$nextTick(async () => {
+                // Check if billingForm ref is defined
+                if (this.$refs.billingForm) {
+                    // Validate billing form
+                    const billingFormIsValid = await this.$refs.billingForm.validate();
+
+                    // Validate card form
+                    const cardFormIsValid = this.validateCardForm();
+
+                    // Check if all forms are valid before proceeding
+                    if (billingFormIsValid && cardFormIsValid) {
+                        // Perform actions with billingInfo and formData data (e.g., send to server)
+                        console.log('Forms submitted successfully', this.billingInfo, this.formData);
+                    } else {
+                        console.log('Forms contain validation errors');
+                    }
+                } else {
+                    console.error('Billing form ref is undefined');
+                }
+            });
+        },
+        validateCardForm() {
+            // Implement validation logic for the card form
+            const isValid =
+                /^\d{16}$/.test(this.formData.number) &&
+                /^\d{2}\/\d{2}$/.test(this.formData.expiry) &&
+                /^[A-Za-z\s]+$/.test(this.formData.name) &&
+                /^\d{3}$/.test(this.formData.cvv);
+
+            return isValid;
         },
         clearForm() {
             // Clear form logic here
@@ -189,6 +247,15 @@ export default {
 <style scoped>
 /* Add your custom styles here */
 
+.v-btn--active,
+
+.v-btn--router-active,
+.v-btn--outlined:hover,
+.v-btn--rounded:hover,
+.v-btn--depressed:hover,
+.v-btn--text:hover {
+  background-color: #1976d2; /* Change to your preferred color */
+}
 .text-center {
     text-align: center;
 
@@ -215,6 +282,10 @@ export default {
 .custom-radio-group {
     margin-top: 16px;
     margin-bottom: 16px;
+}
+
+.text-right {
+    text-align: center;
 }
 
 /* Add more styles as needed */
